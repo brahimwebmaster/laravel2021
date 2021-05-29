@@ -5,7 +5,7 @@
    @csrf
   <div class="form-group">
     <label for="exampleFormControlInput1">Titre Livre</label>
-    <input type="text" name="titre"  class="form-control">
+    <input type="text" name="titre" value="{{old('titre')}}" class="form-control">
   </div>
   @error('titre')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
-    <textarea name="description" class="form-control"  rows="3"></textarea>
+    <textarea name="description" class="form-control"  rows="3">{{old('description')}}</textarea>
   </div>
   <div class="form-group">
   <input type="submit" class="btn btn-primary" value="Ajouter">

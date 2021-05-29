@@ -8,7 +8,8 @@ use App\Http\Controllers\LivreController;
 Route::get('/', [LivreController::class,'index'] )->name('acceuil');
 
 Route::get('/ajouter_livre', [LivreController::class,'ajouterLivre'])->name('ajouter_livre');
-
 Route::post('/ajouter_livre',[LivreController::class,'postAjouterLivre'])->name('post_ajouter_livre');
+
+Route::get('/afficher_livre/{id}', [LivreController::class, 'afficherLivre'])->name('afficher_livre');
 
 

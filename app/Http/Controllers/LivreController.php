@@ -9,7 +9,15 @@ class LivreController extends Controller
 {
     public function index(){
 
-      return view('pages.home');
+      $livres = Livre::paginate(8);
+
+     /* $livres = Livre::where('titre', 'Laravel')
+      ->where('description','<>', null)
+      ->orderBy('id','DESC')
+      ->get();   */
+      //$livre= Livre::findOrFail(1);
+      // $nbLivre = Livre::max('id');
+      return view('pages.home',compact('livres'));
     }
     public function ajouterLivre(){
 
@@ -19,12 +27,17 @@ class LivreController extends Controller
     public function postAjouterLivre(Request $request){
 
         $request->validate([
-          'titre'=>'required|min:5',
+          'titre'=>'required|min:5|alpha_num',
           'description'=>'min:10'
         ]);
 
         Livre::create($request->all());
          return back()->with('success','Votre Livre a été inseré');
     }
-    //
+    
+    public function afficherLivre($id) {
+
+      $livre= Livre::find($id);
+      return view('pages.afficher_livre', compact('livre'));
+    }
 }
