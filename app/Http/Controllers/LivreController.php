@@ -18,13 +18,13 @@ class LivreController extends Controller
 
     public function postAjouterLivre(Request $request){
 
+        $request->validate([
+          'titre'=>'required|min:5',
+          'description'=>'min:10'
+        ]);
 
         Livre::create($request->all());
-
-      /* $livre = new Livre() ;
-       $livre->titre = $request->titre;
-       $livre->description = $request->description;
-       $livre->save();*/
+         return back()->with('success','Votre Livre a été inseré');
     }
     //
 }

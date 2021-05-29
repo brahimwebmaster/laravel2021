@@ -7,14 +7,17 @@
     <label for="exampleFormControlInput1">Titre Livre</label>
     <input type="text" name="titre"  class="form-control">
   </div>
+  @error('titre')
+    <div class="alert alert-danger">{{ $message }}</div>
+   @enderror
 
-  <div class="form-group">
+  <!--<div class="form-group">
       <label for="sel1">Choisir Categorie :</label>
       <select class="form-control" name="category_id">
         <option value="informatique">Informatique</option>
         <option value="science">Science</option>
       </select>
-    </div>
+    </div>-->
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
@@ -23,5 +26,8 @@
   <div class="form-group">
   <input type="submit" class="btn btn-primary" value="Ajouter">
   </div>
+  @error('description')
+    <div class="alert alert-danger">{{ $message }}</div>
+   @enderror
 </form>
 @endsection

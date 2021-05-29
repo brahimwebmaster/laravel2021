@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Livre extends Model
 {
 
-    protected $guarded= ['category_id'];
+      protected $guarded= [];
+     // protected $fillable = ['titre'];
+
 
     use HasFactory;
 }
