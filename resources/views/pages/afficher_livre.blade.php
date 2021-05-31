@@ -9,7 +9,10 @@
     <a href="{{route('acceuil')}}" class="btn btn-primary">Retour à la liste</a>
   </div>
   <div class="card-footer text-muted">
-    2 days ago
+   Crée  {{$livre->created_at->diffForHumans()}}
+   <hr>
+  Mis à jour il ya : {{$livre->updated_at->diffForHumans()}}
+
   </div>
 </div>
 

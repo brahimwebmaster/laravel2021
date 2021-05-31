@@ -9,8 +9,10 @@ class Livre extends Model
 {
 
       protected $guarded= [];
-     // protected $fillable = ['titre'];
-
+ 
+      public function category(){
+          return $this->belongsTo(Category::class);
+      }
 
     use HasFactory;
 }
