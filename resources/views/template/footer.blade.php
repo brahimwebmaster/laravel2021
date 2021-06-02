@@ -1,3 +1,3 @@
 <footer class="container">
-  <p>&copy; Company 2017-2021</p>
+  <p>&copy; {{ $company_name }} - {{ env('NUM_TEL') }} 2021</p>
 </footer>

@@ -52,8 +52,8 @@ class LivreController extends Controller
         'category_id'=>'required'
       ]);
 
-      dd($request->all());
-
+      $livre= Livre::find($id)->update($request->all());
+      return back()->with('success','Livre edité avec succès');
     }
     
     public function afficherLivre($id) {

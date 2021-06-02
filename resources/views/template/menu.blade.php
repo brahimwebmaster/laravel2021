@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="{{route('acceuil')}}">Home Page</a>
+  <a class="navbar-brand" href="{{route('acceuil')}}">{{ $application_name }}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,6 +14,14 @@
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="{{route('ajouter_livre')}}">Ajouter Livre</a>
           <a class="dropdown-item" href="{{route('ajouter_categorie')}}">Ajouter Catégorie</a>
+        </div>
+      </li>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+        @foreach ($categories as $categorie )
+           <a class="dropdown-item" href="">{{ $categorie->nom_categorie }}</a>
+        @endforeach
         </div>
       </li>
     </ul>
