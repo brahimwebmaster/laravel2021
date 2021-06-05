@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function ajouterCategorie(){
 
-        $categories = Category::orderBy('id','DESC')->get();
+        $categories = Category::withCount('livres')->orderBy('livres_count','DESC')->get();
         return view('pages.ajouter_categorie',compact('categories'));
     }
 

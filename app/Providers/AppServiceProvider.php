@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use App\Models\Category;
+
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,9 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      View::share([
+     View::share([
           'application_name' => 'APP LIVRE',
-          'company_name' => '3w'
+          'company_name' => '3w',
+          'categories'=> Category::all()
       ]);
       Paginator::useBootstrap();
         //

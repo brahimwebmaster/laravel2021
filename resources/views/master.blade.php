@@ -11,7 +11,14 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Hello, world!</h1>
+      <h1 class="display-3">
+        Hello,
+        @auth
+       {{Auth::user()->name}}
+        @else
+        world! 
+      @endauth
+      </h1>
     </div>
   </div>
 
@@ -25,7 +32,7 @@
     </div>
       @endif
 
-     <!-- @if ($errors->any())
+      <!--@if ($errors->any())
         <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)

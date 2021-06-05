@@ -20,14 +20,40 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
         @foreach ($categories as $categorie )
-           <a class="dropdown-item" href="">{{ $categorie->nom_categorie }}</a>
+           <a class="dropdown-item" href="{{route('recherche_par_categorie',$categorie->id)}}">{{ $categorie->nom_categorie }}</a>
         @endforeach
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Rechercher" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+    <div class="mr-3">
+    <ul class="navbar-nav ml-auto">
+         <!-- Authentication Links -->
+         @guest
+          <li class="nav-item">
+           <a class="nav-link" href="{{ route('login') }}">Login</a>
+           </li>                     
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">Créer un compte</a>
+            </li>
+            @else
+            <li>
+             <a  class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                        Logout
+               </a>
+                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+              </form>
+                </li>
+          @endguest
+        </ul>
+      </div>
+
+
+
+    <form class="form-inline my-2 my-lg-0" method='POST' action="{{route('recherche_par_titre')}}">
+    @csrf
+      <input class="form-control mr-sm-2" type="text" name='recherche' placeholder="Tapez un titre .." aria-label="Tapez un titre">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Chercher Livre</button>
     </form>
   </div>
 </nav>

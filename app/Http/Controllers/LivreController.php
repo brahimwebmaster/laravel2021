@@ -67,4 +67,17 @@ class LivreController extends Controller
       $livre->delete();
      return back()->with('success','Livre Supprimé');
     }
+
+    public function chercherParCategorie ($idCat){
+      $livres = Livre::where('category_id', $idCat)->orderBy('id','desc')->paginate(8);
+      return view('pages.home',compact('livres'));
+    }
+    public function chercherParTitre(Request $request){
+      $livres = Livre::where('titre', 'like','%'.$request->recherche.'%')
+      ->orWhere('description','like','%'.$request->recherche.'%')
+      ->orderBy('id','desc')->paginate(5);
+      ////
+      return view('pages.home',compact('livres'));
+
+  }
 }
