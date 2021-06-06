@@ -9,16 +9,15 @@ use Illuminate\Http\Request;
 
 class LivreController extends Controller
 {
+
+ /* public function __construct()  
+    {  
+      $this->middleware('auth')->only(['ajouterLivre']);  
+    }*/
     public function index(){
 
       $livres = Livre::paginate(8);
 
-     /* $livres = Livre::where('titre', 'Laravel')
-      ->where('description','<>', null)
-      ->orderBy('id','DESC')
-      ->get();   */
-      //$livre= Livre::findOrFail(1);
-      // $nbLivre = Livre::max('id');
       return view('pages.home',compact('livres'));
     }
     public function ajouterLivre(){

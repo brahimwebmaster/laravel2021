@@ -19,9 +19,10 @@
       <td>{{$livre->category->nom_categorie}}</td>
       <td>
         <a class="btn btn-primary" href="{{route('afficher_livre', $livre->id)}}">Voir</a>
+        @auth
         <a class="btn btn-warning" href="{{route('editer_livre', $livre->id)}}">Editer</a>
         <a class="btn btn-danger" href="{{route('supprimer_livre', $livre->id)}}">Supprimer</a>
-
+        @endauth
       </td>
     </tr>
     @endforeach

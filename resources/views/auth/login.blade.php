@@ -17,7 +17,7 @@
     <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
     </div>
 
-   <div class="form-label-group">
+   <div class="form-label-group mb-3">
    <label for="inputPassword">Mot de passe</label>
 
     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Mot de passe" required>
@@ -25,7 +25,8 @@
 
    <div class="checkbox mb-3">
     <label>
-      <input type="checkbox" value="remember-me"> Remember me
+      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> Remember me
+
     </label>
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>

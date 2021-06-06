@@ -34,20 +34,25 @@ public function subscribe(Request $request){
             'email'=> $validData['email'],
             'password'=> Hash::make($validData['password'])
         ]);
+        Auth::login($user);
         return redirect()->route('acceuil')->with('success','Votre compte : '. $user->email.' a été creé !');
     }
 
  public function postLogin(Request $request) {
+
      $validData = $request->validate([
          'email'=>['required','email'],
          'password'=>['required']
      ]);
+     $remember  = ( !empty( $request->remember ) )? true : false;
 
      $credentials = ['email'=>$validData['email'],'password'=> $validData['password']];
 
-       if(Auth::attempt($credentials)) {
-         $request->session()->regenerate();
-         return redirect()->route('acceuil')->with('success','Vous êtes connecté !!');   
+       if(Auth::attempt($credentials,$remember)) {
+        $user = User::where(["email" => $credentials['email']])->first();
+        // $request->session()->regenerate();
+         Auth::login($user, $remember);
+         return redirect()->intended()->with('success','Vous êtes connecté !!'); 
          } 
     return back()->withErrors(['email' => 'Email ou mot de passe invalide !']);
  }
