@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
-
+use App\Mail\Contact;
 
 
 
@@ -46,5 +46,4 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/chercher_par_categorie/{id}', [LivreController::class, 'chercherParCategorie'])->name('recherche_par_categorie');
 Route::post('/chercher_par_titre', [LivreController::class, 'chercherParTitre'])->name('recherche_par_titre');
 Route::get('/afficher_livre/{id}', [LivreController::class, 'afficherLivre'])->name('afficher_livre');
-
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
 use Auth;
+use App\Mail\Contact;
+use Mail;
 
 class AuthController extends Controller
 {
@@ -35,6 +37,10 @@ public function subscribe(Request $request){
             'password'=> Hash::make($validData['password'])
         ]);
         Auth::login($user);
+        // envoi mail to log file
+        Mail::to($user->email)
+        ->send(new Contact(['nom'=>$user->name,'email'=>$user->email,'message'=>'Votre compte a été crée']));
+
         return redirect()->route('acceuil')->with('success','Votre compte : '. $user->email.' a été creé !');
     }
 
